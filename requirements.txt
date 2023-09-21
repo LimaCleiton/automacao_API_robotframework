@@ -1,0 +1,41 @@
+## As bibliotecas comentadas devem ser executadas apenas localmente, pois já serão instaladas
+## através do template quando executar a pipeline. 
+
+appdirs==1.4.4
+attrs==20.3.0
+certifi==2020.12.5
+coverage==5.5
+filelock==3.0.12
+idna==2.10
+curlify==2.2.1
+jsonpath-rw==1.4.0
+jsonpath-rw-ext==1.2.2
+jsonschema==3.2.0
+objectpath==0.6.1
+pbr==5.5.1
+pluggy==0.13.1
+ply==3.11
+prompt-toolkit==2.0.10
+py==1.10.0
+PyYAML==6.0.1
+requests==2.25.1
+robotframework==4.0
+robotframework-databaselibrary==1.2.4
+robotframework-jsonlibrary==0.3.1
+robotframework-jsonvalidator==2.0.0
+robotframework-requests==0.9.1
+six==1.15.0
+tox==3.0.0
+urllib3==1.26.4
+cx-Oracle==8.1.0
+
+# Bibliotecas que devem subir sempre descomentadas para serem mescladas com as libs do template de libs em comum.
+chardet==4.0.0
+decorator==4.4.2
+distlib==0.3.1
+pyjsonselect==0.2.2
+pyrsistent==0.17.3
+python-dateutil==2.8.1
+text-unidecode==1.3
+wcwidth==0.2.5
+wrapt==1.12.1

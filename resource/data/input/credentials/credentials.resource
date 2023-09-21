@@ -1,0 +1,4 @@
+*** Variables ***
+${MY_GITHUB_USER}   LimaCleiton
+${MY_GITHUB_PASS}   Cle081524
+${MY_GITHUB_TOKEN}  github_pat_teste11AVSPUZA0EeQxU5Eh66q2_tKk51Udu9j0rsZyx76zxZF4ukQOT30CdhSptQLS92ooRFL6L75EYXOMhcFI

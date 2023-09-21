@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.0 (Python 3.11.1 on win32)" generated="20230921 00:11:13.188" rpa="false" schemaversion="2">
+<suite id="s1" name="Tests" source="C:\automacao\api\tests">
+<suite id="s1-s1" name="API user" source="C:\automacao\api\tests\API_user.robot">
+<test id="s1-s1-t1" name="TC001: Autenticacao GITHUB">
+<kw name="Dado que realizo a parametrizacao do endpoint &quot;issues&quot; enviando headers &quot;válido&quot;" library="gherkin_ptbr" sourcename="Dado que ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="realizo a parametrizacao do endpoint &quot;issues&quot; enviando headers &quot;válido&quot;" library="GET_issues" sourcename="realizo a parametrizacao do endpoint &quot;issues&quot; enviando headers &quot;${headers}&quot;">
+<doc>keyword responsavel por realizar a parametrizacao do headers do endpoint "issues"</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{headers}</var>
+<arg>Authorization=Barer ${MY_GITHUB_TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230921 00:11:14.290" level="INFO">&amp;{headers} = { Authorization=Barer github_pat_teste11AVSPUZA0EeQxU5Eh66q2_tKk51Udu9j0rsZyx76zxZF4ukQOT30CdhSptQLS92ooRFL6L75EYXOMhcFI }</msg>
+<status status="PASS" starttime="20230921 00:11:14.289" endtime="20230921 00:11:14.290"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${headers}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230921 00:11:14.291" level="INFO">${headers} = {'Authorization': 'Barer github_pat_teste11AVSPUZA0EeQxU5Eh66q2_tKk51Udu9j0rsZyx76zxZF4ukQOT30CdhSptQLS92ooRFL6L75EYXOMhcFI'}</msg>
+<status status="PASS" starttime="20230921 00:11:14.290" endtime="20230921 00:11:14.291"/>
+</kw>
+<status status="PASS" starttime="20230921 00:11:14.288" endtime="20230921 00:11:14.291"/>
+</kw>
+<status status="PASS" starttime="20230921 00:11:14.287" endtime="20230921 00:11:14.292"/>
+</kw>
+<status status="PASS" starttime="20230921 00:11:14.286" endtime="20230921 00:11:14.292"/>
+</kw>
+<kw name="Quando pesquiso issues com state &quot;open&quot; e com label &quot;bug&quot;" library="gherkin_ptbr" sourcename="Quando ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="pesquiso issues com state &quot;open&quot; e com label &quot;bug&quot;" library="GET_issues" sourcename="pesquiso issues com state &quot;${STATE}&quot; e com label &quot;${LABEL}&quot;">
+<doc>Pesquisar issues</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{PARAMS}</var>
+<arg>state=${STATE}</arg>
+<arg>labels=${LABEL}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230921 00:11:14.296" level="INFO">&amp;{PARAMS} = { state=open | labels=bug }</msg>
+<status status="PASS" starttime="20230921 00:11:14.295" endtime="20230921 00:11:14.296"/>
+</kw>
+<kw name="GET" library="RequestsLibrary">
+<var>${response}</var>
+<arg>url=${AMBIENTE.url_base}/${ISSUES_URI}</arg>
+<arg>expected_status=any</arg>
+<arg>verify=${False}</arg>
+<arg>headers=${HEADERS_PADRAO}</arg>
+<arg>params=${PARAMS}</arg>
+<doc>Sends a GET request.</doc>
+<msg timestamp="20230921 00:11:14.672" level="INFO">GET Request : url=https://api.github.com/repos/LimaCleiton/ViaVarejo/issues?state=open&amp;labels=bug 
+ path_url=/repos/LimaCleiton/ViaVarejo/issues?state=open&amp;labels=bug 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'json': 'Content-Type=application/json'} 
+ body=None 
+ </msg>
+<msg timestamp="20230921 00:11:14.672" level="INFO">GET Response : url=https://api.github.com/repos/LimaCleiton/ViaVarejo/issues?state=open&amp;labels=bug 
+ status=200, reason=OK 
+ headers={'Server': 'GitHub.com', 'Date': 'Thu, 21 Sep 2023 03:09:39 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=60, s-maxage=60', 'Vary': 'Accept, Accept-Encoding, Accept, X-Requested-With', 'ETag': 'W/"f2366a8bf9f95d8dab994381b0ac995ba6b04eca009d47feb6cc25670d1ad9e6"', 'X-GitHub-Media-Type': 'github.v3; format=json', 'x-github-api-version-selected': '2022-11-28', 'Access-Control-Expose-Headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset', 'Access-Control-Allow-Origin': '*', 'Strict-Transport-Security': 'max-age=31536000; includeSubdomains; preload', 'X-Frame-Options': 'deny', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Referrer-Policy': 'origin-when-cross-origin, strict-origin-when-cross-origin', 'Content-Security-Policy': "default-src 'none'", 'Content-Encoding': 'gzip', 'X-RateLimit-Limit': '60', 'X-RateLimit-Remaining': '45', 'X-RateLimit-Reset': '1695266752', 'X-RateLimit-Resource': 'core', 'X-RateLimit-Used': '15', 'Accept-Ranges': 'bytes', 'Content-Length': '844', 'X-GitHub-Request-Id': '1867:0CB0:453BDE:4878A3:650BB3F3'} 
+ body=[{"url":"https://api.github.com/repos/LimaCleiton/ViaVarejo/issues/1","repository_url":"https://api.github.com/repos/LimaCleiton/ViaVarejo","labels_url":"https://api.github.com/repos/LimaCleiton/ViaVarejo/issues/1/labels{/name}","comments_url":"https://api.github.com/repos/LimaCleiton/ViaVarejo/issues/1/comments","events_url":"https://api.github.com/repos/LimaCleiton/ViaVarejo/issues/1/events","html_url":"https://github.com/LimaCleiton/ViaVarejo/issues/1","id":1554101668,"node_id":"I_kwDOGiCFj85cobWk","number":1,"title":"Teste de criar Issue via API do GitHub","user":{"login":"LimaCleiton","id":90503780,"node_id":"MDQ6VXNlcjkwNTAzNzgw","avatar_url":"https://avatars.githubusercontent.com/u/90503780?v=4","gravatar_id":"","url":"https://api.github.com/users/LimaCleiton","html_url":"https://github.com/LimaCleiton","followers_url":"https://api.github.com/users/LimaCleiton/followers","following_url":"https://api.github.com/users/LimaCleiton/following{/other_user}","gists_url":"https://api.github.com/users/LimaCleiton/gists{/gist_id}","starred_url":"https://api.github.com/users/LimaCleiton/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/LimaCleiton/subscriptions","organizations_url":"https://api.github.com/users/LimaCleiton/orgs","repos_url":"https://api.github.com/users/LimaCleiton/repos","events_url":"https://api.github.com/users/LimaCleiton/events{/privacy}","received_events_url":"https://api.github.com/users/LimaCleiton/received_events","type":"User","site_admin":false},"labels":[{"id":3642191250,"node_id":"LA_kwDOGiCFj87ZF22S","url":"https://api.github.com/repos/LimaCleiton/ViaVarejo/labels/bug","name":"bug","color":"d73a4a","default":true,"description":"Something isn't working"}],"state":"open","locked":false,"assignee":null,"assignees":[],"milestone":null,"comments":0,"created_at":"2023-01-24T01:12:43Z","updated_at":"2023-09-21T03:01:11Z","closed_at":null,"author_association":"OWNER","active_lock_reason":null,"body":"Yeah! Criei uma issue via API!!!","reactions":{"url":"https://api.github.com/repos/LimaCleiton/ViaVarejo/issues/1/reactions","total_count":0,"+1":0,"-1":0,"laugh":0,"hooray":0,"confused":0,"heart":0,"rocket":0,"eyes":0},"timeline_url":"https://api.github.com/repos/LimaCleiton/ViaVarejo/issues/1/timeline","performed_via_github_app":null,"state_reason":null}] 
+ </msg>
+<msg timestamp="20230921 00:11:14.672" level="INFO">C:\Users\Cleiton Lima\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1013: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api.github.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20230921 00:11:14.672" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230921 00:11:14.296" endtime="20230921 00:11:14.672"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20230921 00:11:14.672" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230921 00:11:14.672" endtime="20230921 00:11:14.672"/>
+</kw>
+<status status="PASS" starttime="20230921 00:11:14.294" endtime="20230921 00:11:14.672"/>
+</kw>
+<status status="PASS" starttime="20230921 00:11:14.293" endtime="20230921 00:11:14.672"/>
+</kw>
+<status status="PASS" starttime="20230921 00:11:14.293" endtime="20230921 00:11:14.672"/>
+</kw>
+<kw name="Então retorna a requisição com status code &quot;201&quot;" library="gherkin_ptbr" sourcename="Então ${keyword}">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>${keyword}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="retorna a requisição com status code &quot;201&quot;" library="kws_shared" sourcename="retorna a requisição com status code &quot;${esperado}&quot;">
+<doc>keyword responsavel por validar o status code mediante a exigencia do teste</doc>
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>${esperado}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<msg timestamp="20230921 00:11:14.690" level="FAIL">Url: https://api.github.com/repos/LimaCleiton/ViaVarejo/issues?state=open&amp;labels=bug Expected status: 200 != 201</msg>
+<status status="FAIL" starttime="20230921 00:11:14.672" endtime="20230921 00:11:14.690"/>
+</kw>
+<status status="FAIL" starttime="20230921 00:11:14.672" endtime="20230921 00:11:14.691"/>
+</kw>
+<status status="FAIL" starttime="20230921 00:11:14.672" endtime="20230921 00:11:14.691"/>
+</kw>
+<status status="FAIL" starttime="20230921 00:11:14.672" endtime="20230921 00:11:14.691"/>
+</kw>
+<doc>Teste que valida o acesso ao github</doc>
+<tag>TC001</tag>
+<status status="FAIL" starttime="20230921 00:11:14.269" endtime="20230921 00:11:14.692">Url: https://api.github.com/repos/LimaCleiton/ViaVarejo/issues?state=open&amp;labels=bug Expected status: 200 != 201</status>
+</test>
+<status status="FAIL" starttime="20230921 00:11:13.267" endtime="20230921 00:11:14.694"/>
+</suite>
+<status status="FAIL" starttime="20230921 00:11:13.204" endtime="20230921 00:11:14.697"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">TC001</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="API user">Tests.API user</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
